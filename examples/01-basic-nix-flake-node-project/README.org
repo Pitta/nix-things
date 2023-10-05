@@ -1,5 +1,5 @@
 
-#+TITLE: Basic Flake Source
+#+TITLE: Basic Nix Flake - Node Project
 #+AUTHOR: Justin Pitta
 #+auto_tangle: t
 #+PROPERTY: header-args:nix :mkdirp yes
