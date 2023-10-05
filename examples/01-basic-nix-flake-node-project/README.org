@@ -13,8 +13,9 @@ From your terminal
 1. Clone this repo and navigate to its root
 2. Run ~nix develop~
 
+
    #+begin_quote
-   /See [[file:~/projects/nix-things/README.org][README.org]] should you have issues running any ~nix~ commands
+   /See [[file:README.org][README.org]] should you have issues running any ~nix~ commands/
    #+end_quote
 
 * Source
