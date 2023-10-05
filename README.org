@@ -1,0 +1,6 @@
+#+TITLE: Nix Things
+#+AUTHOR: Justin Pitta
+
+* Nix Things
+
+This is meant to serve as a collection of varios ways i've learned how to do a thing in =nix=.
