@@ -1,6 +1,5 @@
-
 #+TITLE: Nix Things
-#+AUTHOR: Justin Pitta
+#+AUTHOR: github.com/Pitta
 
 * Nix Things
 
