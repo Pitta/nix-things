@@ -4,34 +4,7 @@
 #+auto_tangle: t
 #+PROPERTY: header-args:nix :mkdirp yes
 
-* Goal
-
-A basic =flake.nix= that when invoked by ~nix develop~ provides =node 20= as a system level dependency.
-
-* Use
-
-From your terminal
-
-1. Clone this repo and navigate to its root
-2. Run ~nix develop~
-
-#+begin_quote
-Note: if you get an error like this:
-
-#+begin_src shell
-  error: experimental Nix feature 'flakes' is disabled; use '--extra-experimental-features flakes' to override
-#+end_src
-
-That means these features are still locked behind an experimental flag. To address this, create a file at ~/etc/nix/nix.conf~, then add the following line to it:
-
-#+begin_src shell
-  experimental-features = nix-command flakes
-#+end_src
-#+end_quote
-
-* Source
-
-**  =flake.nix=
+*  =flake.nix=
 
 Source for =flake.nix=
 
@@ -56,7 +29,7 @@ Source for =flake.nix=
   }
 #+end_src
 
-** =shell.nix=
+* =shell.nix=
 
 Source for =shell.nix=
 
