@@ -1,0 +1,76 @@
+
+#+TITLE: Basic Nix Flake - Node Project (Source)
+#+AUTHOR: github.com/Pitta
+#+auto_tangle: t
+#+PROPERTY: header-args:nix :mkdirp yes
+
+*  =flake.nix=
+
+This is a very thin flake, with an eye toward flexibility for future enhancements.
+
+The goal of this flake is to provide the base setup and behavior.
+
+=inputs=:
+- Specifies the external dependencies of your flake.
+- =nixpkgs=: Points to the Nix packages collection.
+- =flake-utils=: Points to a utility library for working with flakes.
+
+=outputs=:
+- Defines how the inputs are transformed into outputs.
+- The function =flake-utils.lib.eachDefaultSystem= iterates over a set of systems, creating a set of outputs for each system.
+- For each system:
+ - =pkgs=: The set of packages available for that system, imported from nixpkgs.
+ - =packages.default=: Imports shell.nix to define the default package for the flake.
+ - =devShells.default=: Also imports shell.nix to define the default development shell for the flake.
+ 
+#+begin_src nix :tangle flake.nix
+  {
+    description = "Basic Flake Example";
+    inputs = {
+      nixpkgs.url = "github:nixos/nixpkgs";
+      flake-utils.url = "github:numtide/flake-utils";
+    };
+
+    outputs = { self, nixpkgs, flake-utils, ... }@attrs:
+      flake-utils.lib.eachDefaultSystem (system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+          };
+        in {
+          packages.default = import ./shell.nix { inherit pkgs; inherit system; };
+          devShells.default = import ./shell.nix { inherit pkgs; inherit system; };
+        });
+  }
+#+end_src
+
+#+begin_quote
+Using this pattern with =shell.nix= allows for seperate CI/CD profiles that are narrowed down to just the applicaiton dependencies, without the packages supporting developer workflows and tasks.
+
+This will be expanded on in later examples.
+#+end_quote
+
+* =shell.nix=
+
+This file defines the environment for building your project or for entering a development shell.
+
+={ pkgs, system }:=:
+- Function arguments, where pkgs is the set of packages available for the current system, and system is the system identifier (like x86_64-linux).
+
+=pkgs.mkShell=:
+- Constructs a development environment shell.
+
+=buildInputs=:
+- Lists the dependencies needed for building your project or for the development shell.
+- In this case, it specifies =nodejs_20= as a dependency.
+
+#+begin_src nix :tangle shell.nix
+  { pkgs, system }:
+
+  pkgs.mkShell {
+    buildInputs = with pkgs; [
+      nodejs_20  # Including NodeJS v20
+    ];
+
+  }
+#+end_src
