@@ -4,7 +4,7 @@
 #+auto_tangle: t
 #+PROPERTY: header-args:nix :mkdirp yes
 
-* COMMENT Goal
+* Goal
 
 A basic =flake.nix= that when invoked by ~nix develop~ provides =node 20= as a system level dependency.
 
