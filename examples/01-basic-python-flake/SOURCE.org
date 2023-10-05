@@ -1,0 +1,62 @@
+
+#+TITLE: Basic Flake Source
+#+AUTHOR: Justin Pitta
+#+auto_tangle: t
+#+PROPERTY: header-args:nix :mkdirp yes
+
+* COMMENT Goal
+
+A basic =flake.nix= that when invoked by ~nix develop~ provides =node 20= as a system level dependency.
+
+#+begin_quote
+Note: if you get an error like this:
+#+begin_src shell
+  error: experimental Nix feature 'flakes' is disabled; use '--extra-experimental-features flakes' to override
+#+end_src
+That means these features are still locked behind an experimental flag. To address this, create a file at ~/etc/nix/nix.conf~, then add the following line to it:
+#+begin_src shell
+  experimental-features = nix-command flakes
+#+end_src
+#+end_quote
+
+* Source
+
+**  =flake.nix=
+
+Source for =flake.nix=
+
+#+begin_src nix :tangle flake.nix
+  {
+    description = "Basic Flake Example";
+    inputs = {
+      nixpkgs.url = "github:nixos/nixpkgs";
+      flake-utils.url = "github:numtide/flake-utils";
+    };
+
+    outputs = { self, nixpkgs, flake-utils, ... }@attrs:
+      flake-utils.lib.eachDefaultSystem (system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+          };
+        in {
+          packages.default = import ./shell.nix { inherit pkgs; inherit system; };
+          devShells.default = import ./shell.nix { inherit pkgs; inherit system; };
+        });
+  }
+#+end_src
+
+** =shell.nix=
+
+Source for =shell.nix=
+
+#+begin_src nix :tangle shell.nix
+  { pkgs, system }:
+
+  pkgs.mkShell {
+    buildInputs = with pkgs; [
+      nodejs_20  # Including Python 3.11
+    ];
+
+  }
+#+end_src
