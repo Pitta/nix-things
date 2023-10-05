@@ -15,7 +15,7 @@ From your terminal
 
 
    #+begin_quote
-   /See [[file:/README.org][README.org]] should you have issues running any ~nix~ commands/
+   /See [[file:/README.org#running-examples][README.org]] should you have issues running any nix commands/
    #+end_quote
 
 * Source
