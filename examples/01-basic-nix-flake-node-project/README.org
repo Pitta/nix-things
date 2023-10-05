@@ -1,4 +1,3 @@
-
 #+TITLE: Basic Nix Flake - Node Project
 #+AUTHOR: Justin Pitta
 #+auto_tangle: t
@@ -13,10 +12,20 @@ From your terminal
 1. Clone this repo and navigate to its root
 2. Run ~nix develop~
 
+You should now be in the develop shell that has Node 20 avalible.
 
    #+begin_quote
    /See [[file:/README.org#running-examples][README.org]] should you have issues running any nix commands/
    #+end_quote
+
+** Validate
+
+Use the following commands to sanity check the ~node~ installation:
+
+- ~which node~
+- ~node --version~
+
+Exit the developer shell and run the same commands to compare the output.
 
 * Source
 
