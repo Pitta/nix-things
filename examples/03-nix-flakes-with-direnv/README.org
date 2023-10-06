@@ -1,0 +1,30 @@
+#+TITLE: Nix Flakes with direnv
+#+AUTHOR: github.com/Pitta
+
+A basic =flake.nix= that is activated upon navigation to the project directory.
+
+* Use
+
+From your terminal
+
+1. Clone this repo and navigate to its root
+2. Run ~~
+
+You should now be in the develop shell that has Node 20 avalible.
+
+   #+begin_quote
+   /See [[file:/README.org#running-examples][README.org]] should you have issues running any nix commands/
+   #+end_quote
+
+** Validate
+
+Test the aliases added:
+
+- run ~alias~ with no args to get a list of avalible aliases
+- try ~la | grep flake~
+
+Exit the developer shell and attempt to run the same aliases to compare the output.
+
+* Source
+
+Source code files are derived from [[file:SOURCE.org][SOURCE.org]]
