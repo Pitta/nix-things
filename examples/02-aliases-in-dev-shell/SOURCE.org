@@ -1,0 +1,57 @@
+
+#+TITLE: Basic Nix Flake - Aliases (Source)
+#+AUTHOR: github.com/Pitta
+#+auto_tangle: t
+#+PROPERTY: header-args:nix :mkdirp yes
+
+* =flake.nix=
+
+This is building off of the previos example, [[file:~/projects/nix-things/examples/01-basic-nix-flake-node-project/][01-basic-nix-flake-node-project]].
+
+There are no changes to the ~flake.nix~
+ 
+#+begin_src nix :tangle flake.nix
+  {
+    description = "Basic Flake Example";
+    inputs = {
+      nixpkgs.url = "github:nixos/nixpkgs";
+      flake-utils.url = "github:numtide/flake-utils";
+    };
+
+    outputs = { self, nixpkgs, flake-utils, ... }@attrs:
+      flake-utils.lib.eachDefaultSystem (system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+          };
+        in {
+          packages.default = import ./shell.nix { inherit pkgs; inherit system; };
+          devShells.default = import ./shell.nix { inherit pkgs; inherit system; };
+        });
+  }
+#+end_src
+
+* =shell.nix=
+
+~shellHook~:
+- An attribute in a Nix shell environment provides a hook that allows you to execute arbitrary shell commands whenever you enter the shell. It's a flexible tool that can be used for a variety of purposes beyond just setting aliases.
+
+#+begin_src nix :tangle shell.nix
+  { pkgs, system }:
+
+  pkgs.mkShell {
+    buildInputs = with pkgs; [
+      nodejs_20  # Including NodeJS v20
+    ];
+
+    shellHook = ''
+      # These aliases are just examples
+      alias ll='ls -lh'
+      alias la='ls -A'
+      alias grep='grep --color=auto'
+
+      echo "---=== Entering dev-shell for '02-aliases-in-dev-shell'"
+      # More aliases can be added here
+    '';
+  }
+#+end_src
