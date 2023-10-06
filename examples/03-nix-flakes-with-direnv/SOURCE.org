@@ -9,11 +9,8 @@
 A very basic =.envrc= that starts the ~nix develop~ shell upon navigation to the directory.
 
 #+begin_src nix :tangle .envrc
-  # Activate shell.nix
+  # To activate the nix flake:
   use flake
-
-  # To activate the flake.nix instead:
-  # use flake
 #+end_src
 
 * Supporting Files

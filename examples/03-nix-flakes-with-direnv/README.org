@@ -8,22 +8,23 @@ A basic =flake.nix= that is activated upon navigation to the project directory.
 From your terminal
 
 1. Clone this repo and navigate to its root
-2. Run ~~
-
-You should now be in the develop shell that has Node 20 avalible.
-
-   #+begin_quote
-   /See [[file:/README.org#running-examples][README.org]] should you have issues running any nix commands/
-   #+end_quote
+2. On first navigation, you will get an error like:
+   #+begin_src shell
+     direnv: error /home/pitta/projects/nix-things/examples/03-nix-flakes-with-direnv/.envrc is blocked. Run `direnv allow` to approve its content
+   #+end_src
+3. Open and asses the contents of the =.envrc=
+   - This is considered best practice to prevent malicious code execution
+4. Once the =.envrc= is assesed, run  ~direnv allow~
+   
+After some nix processing, you should be dropped into your projects dev-shell.
 
 ** Validate
 
-Test the aliases added:
+1. ~cd~ out of the project directory
+2. Take note of the =direnv: unloading= message
+3. ~cd~ back into the project directory
 
-- run ~alias~ with no args to get a list of avalible aliases
-- try ~la | grep flake~
-
-Exit the developer shell and attempt to run the same aliases to compare the output.
+Should see =direnv= kick into gear, automatically enabling the nix flake.
 
 * Source
 
