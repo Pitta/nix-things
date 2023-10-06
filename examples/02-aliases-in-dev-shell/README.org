@@ -1,0 +1,29 @@
+#+TITLE: Basic Nix Flake - Aliases
+#+AUTHOR: github.com/Pitta
+
+A basic =flake.nix= that when invoked by ~nix develop~ provides =node 20= as a system level dependency, and some custom aliases related to the project.
+
+* Use
+
+From your terminal
+
+1. Clone this repo and navigate to its root
+2. Run ~nix develop~
+
+You should now be in the develop shell that has Node 20 avalible.
+
+   #+begin_quote
+   /See [[file:/README.org#running-examples][README.org]] should you have issues running any nix commands/
+   #+end_quote
+
+** Validate
+
+Test the aliases added!:
+
+- 
+
+Exit the developer shell and attempt to run the same aliases to compare the output.
+
+* Source
+
+Source code files are derived from [[file:SOURCE.org][SOURCE.org]]
