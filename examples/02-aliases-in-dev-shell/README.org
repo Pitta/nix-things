@@ -18,9 +18,10 @@ You should now be in the develop shell that has Node 20 avalible.
 
 ** Validate
 
-Test the aliases added!:
+Test the aliases added:
 
-- 
+- run ~alias~ with no args to get a list of avalible aliases
+- try ~la | grep flake~
 
 Exit the developer shell and attempt to run the same aliases to compare the output.
 

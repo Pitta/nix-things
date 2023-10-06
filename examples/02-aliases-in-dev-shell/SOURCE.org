@@ -6,7 +6,8 @@
 
 * =flake.nix=
 
-This is building off of the previos example, [[file:~/projects/nix-things/examples/01-basic-nix-flake-node-project/][01-basic-nix-flake-node-project]]
+This is building off of the previos example, [[file:~/projects/nix-things/examples/01-basic-nix-flake-node-project/][01-basic-nix-flake-node-project]].
+
 There are no changes to the ~flake.nix~
  
 #+begin_src nix :tangle flake.nix
