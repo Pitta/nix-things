@@ -1,0 +1,61 @@
+
+#+TITLE: Basic Nix Flake - Aliases (Source)
+#+AUTHOR: github.com/Pitta
+#+auto_tangle: t
+#+PROPERTY: header-args:nix :mkdirp yes
+
+* =.envrc=
+
+A very basic =.envrc= that starts the ~nix develop~ shell upon navigation to the directory.
+
+#+begin_src nix :tangle .envrc
+  # To activate the nix flake:
+  use flake
+#+end_src
+
+* Supporting Files
+
+This is building off of the previous example, [[examples/02-aliases-in-dev-shell][02-aliases-in-dev-shell]].
+
+** =flake.nix=
+
+There are no changes to the ~flake.nix~
+ 
+#+begin_src nix :tangle flake.nix
+  {
+    description = "Basic Flake Example";
+    inputs = {
+      nixpkgs.url = "github:nixos/nixpkgs";
+      flake-utils.url = "github:numtide/flake-utils";
+    };
+
+    outputs = { self, nixpkgs, flake-utils, ... }@attrs:
+      flake-utils.lib.eachDefaultSystem (system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+          };
+        in {
+          packages.default = import ./shell.nix { inherit pkgs; inherit system; };
+          devShells.default = import ./shell.nix { inherit pkgs; inherit system; };
+        });
+  }
+#+end_src
+
+** =shell.nix=
+
+There are minor changes to the ~shell.nix~
+
+#+begin_src nix :tangle shell.nix
+  { pkgs, system }:
+
+  pkgs.mkShell {
+    buildInputs = with pkgs; [
+      nodejs_20  # Including NodeJS v20
+    ];
+
+    shellHook = ''
+      echo "---=== Entering dev-shell for 'nix-shell-with-direnv'"
+    '';
+  }
+#+end_src

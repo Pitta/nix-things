@@ -1,0 +1,31 @@
+#+TITLE: Nix Flakes with direnv
+#+AUTHOR: github.com/Pitta
+
+A basic =flake.nix= that is activated upon navigation to the project directory.
+
+* Use
+
+From your terminal
+
+1. Clone this repo and navigate to its root
+2. On first navigation, you will get an error like:
+   #+begin_src shell
+     direnv: error /home/pitta/projects/nix-things/examples/03-nix-flakes-with-direnv/.envrc is blocked. Run `direnv allow` to approve its content
+   #+end_src
+3. Open and asses the contents of the =.envrc=
+   - This is considered best practice to prevent malicious code execution
+4. Once the =.envrc= is assesed, run  ~direnv allow~
+   
+After some nix processing, you should be dropped into your projects dev-shell.
+
+** Validate
+
+1. ~cd~ out of the project directory
+2. Take note of the =direnv: unloading= message
+3. ~cd~ back into the project directory
+
+Should see =direnv= kick into gear, automatically enabling the nix flake.
+
+* Source
+
+Source code files are derived from [[file:SOURCE.org][SOURCE.org]]
