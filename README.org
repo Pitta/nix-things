@@ -3,20 +3,4 @@
 
 This is meant to serve as a collection of varios ways i've learned how to do a thing in =nix=.
 
-* Running Examples
-
-Clone this repo to run any of the examples to see and tinker with how they function.
-
-#+begin_quote
-Note: if you get an error like the one below when running ~nix~ commands:
-
-#+begin_src shell
-  error: experimental Nix feature 'flakes' is disabled; use '--extra-experimental-features flakes' to override
-#+end_src
-
-That means these features are still locked behind an experimental flag. To address this, create a file at ~/etc/nix/nix.conf~, then add the following line to it:
-
-#+begin_src shell
-  experimental-features = nix-command flakes
-#+end_src
-#+end_quote
+- Project Examples are collection of examples that show the utility/power of ~nix flakes~ as a way to manage developer environments.
