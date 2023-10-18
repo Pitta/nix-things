@@ -17,8 +17,11 @@ Coming from package managers like ~brew~, ~port~, ~apt~, etc., ~nix~ can /seem/ 
 
 ** 🔍 Searching for Pacakges
 
+#+begin_quote
 /Q: I want to install pacakges, but I'm not sure what is avalible/
+
 A: Search for pacakges to install
+#+end_quote
 
 Via the web @ https://search.nixos.org/
 
