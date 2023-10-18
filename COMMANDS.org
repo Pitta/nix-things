@@ -28,9 +28,9 @@ Search for packages via:
   nix-env -qaP 'some_package' 
   #+end_src
 
-- ~-q~: Stands for "query". Used to query the Nix store for /installed/ pacakges
-- ~-a~: Stands for "avalible". Used to search for /avalible packages/ to be installed
-- ~-P~: Includes the attribute path of the package. This result is often used with the ~-A~ flag during installs to more precisely target the desired package.
+  - ~-q~: Stands for "query". Used to query the Nix store for /installed/ pacakges
+  - ~-a~: Stands for "avalible". Used to search for /avalible packages/ to be installed
+  - ~-P~: Includes the attribute path of the package. This result is often used with the ~-A~ flag during installs to more precisely target the desired package.
 
 ** 🪛 Imperative Package Management
 
