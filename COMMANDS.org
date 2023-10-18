@@ -60,9 +60,33 @@ Once the desired package has been identified, use ~nix-env~ to install the packa
   - Instead of relying on the lookup, which could be slow at times, one could add ~-A~ along with the /exact/ package name to skip the lookup completely. This requires the name given to be exact, and can allow for installing a specific version of the target package.
   - Can be combined with other flags i.e. ~-iA~
 
+#+begin_quote
+Note: If a package being installed complains about the package license being "unfree", this means the package has some licensing agreement that is not conguent with typical open-source tools.
+
+To install these packages anyway, prepend ~NIXPKGS_ALLOW_UNFREE=1~ to the call to make a 1 time allowance. The whole call should look something like:
+#+begin_src bash
+  NIXPKGS_ALLOW_UNFREE=1 nix-env -i some_package
+#+end_src
+#+end_quote
+
 *** Uninstalling a package
 
-SoonTM
+Uninstalling a package requires knowing its name. We can find a list of the installed packages like this:
+
+#+begin_src bash
+  nix-env -q some_package
+#+end_src
+
+With the target package name in hand, we can then run:
+
+#+begin_src bash
+  nix-env -e some_package
+#+end_src
+
+- ~-e~: Stands for "erase"
+  - Takes a space-seperated list of pacakges to be removed from the system
+
+To validate, simply re-run ~nix-env -q some_package~ and check that output.
 
 ** 📝 Declaritive Pacakge Management
 
