@@ -35,7 +35,7 @@ Search for packages via:
 ** 🪛 Imperative Package Management
 
 #+begin_quote
-/Question: I'm used to tools like ~brew~ - how do I use ~nix~ in a similar way?/
+/Question: I'm used to tools like brew - how do I use nix in a similar way?/
 #+end_quote
 
 If your workflow has involved...
