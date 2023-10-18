@@ -34,6 +34,10 @@ Search for packages via:
 
 ** 🪛 Imperative Package Management
 
+#+begin_quote
+/Question: I'm used to tools like ~brew~ - how do I use ~nix~ in a similar way?
+#+end_quote
+
 If your workflow has involved...
 - ~brew install some_package~
 - ~port install some_package~
@@ -49,11 +53,12 @@ Once the desired package has been identified, use ~nix-env~ to install the packa
   nix-env -i some_package
 #+end_src
 
-~-i~ = short flag for ~--install~. Takes multiple arguements in a space-seperated list
-
-By default, ~nix-env -i~ will do a lookup of the argument given against ~nixpkgs~, similarly to going to https://search.nixos.org/, searching, and using the top result.
-
-~-A~ = short for ~--attr~ across many ~nix~ commands. Instead of relying on the lookup, which could be slow at times, one could add ~-A~ along with the /exact/ package name to skip the lookup completely. This requires the name given to be exact, and can allow for installing a specific version of the target package. Can be combined with other flags i.e. ~-iA~
+- ~-i~: short flag for ~--install~.
+  - Takes multiple arguements in a space-seperated list.
+  - By default, ~nix-env -i~ will do a lookup of the argument given against ~nixpkgs~, similarly to going to https://search.nixos.org/, searching, and using the top result.
+- ~-A~: short for ~--attr~ across many ~nix~ commands.
+  - Instead of relying on the lookup, which could be slow at times, one could add ~-A~ along with the /exact/ package name to skip the lookup completely. This requires the name given to be exact, and can allow for installing a specific version of the target package.
+  - Can be combined with other flags i.e. ~-iA~
 
 *** Uninstalling a package
 
