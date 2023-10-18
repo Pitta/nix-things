@@ -7,12 +7,12 @@ A reference to ~nix~ commands found to be helpful in day to day use.
 
 Coming from package managers like ~brew~, ~port~, ~apt~, etc., ~nix~ can /seem/ daunting/impenetrable. These section should help demystify how to use ~nix~ as a drop in replacement for how most folks approach using the aforementioned tools.
 
-- Searching for Packages
-- [[*Imperitive Package Management][Imperitive Package Management]]
+- [[#searching-for-packages][Searching for Packages]]
+- [[#imperitive-package-management][Imperitive Package Management]]
   - How most users manage packages, typically by invoking an install command with the package manager of choice.
-- [[*Declaritive Package Management][Declaritive Package Management]]
+- [[*declaritive-package-management][Declaritive Package Management]]
   - A more portable, version controll-able approach that declares the desired end state. Great for using the same configuration across multiple machines.
-- [[*Temporary Packages][Temporary Packages]]
+- [[*temporary-packages][Temporary Packages]]
   - Excellent for testing new versions of packages, or entirely new tools, without comitting to system level changes that could impact other parts of the system.
 
 ** Searching for Pacakges
@@ -24,8 +24,12 @@ Via the web @ https://search.nixos.org/
 
 Using the cli:
 #+begin_src bash
-  
+  nix-env -qaP 'some_package' 
 #+end_src
+
+- ~-q~: Stands for "query". Used to query the Nix store for /installed/ pacakges
+- ~-a~: Stands for "avalible". Used to search for /avalible packages/ to be installed
+- ~-P~: Includes the attribute path of the package. This result is often used with the ~-A~ flag during installs to more precisely target the desired package.
 
 ** 🪛 Imperative Package Management
 
@@ -49,6 +53,10 @@ Once the desired package has been identified, use ~nix-env~ to install the packa
 By default, ~nix-env -i~ will do a lookup of the argument given against ~nixpkgs~, similarly to going to https://search.nixos.org/, searching, and using the top result.
 
 ~-A~ = short for ~--attr~ across many ~nix~ commands. Instead of relying on the lookup, which could be slow at times, one could add ~-A~ along with the /exact/ package name to skip the lookup completely. This requires the name given to be exact, and can allow for installing a specific version of the target package. Can be combined with other flags i.e. ~-iA~
+
+*** Uninstalling a package
+
+SoonTM
 
 ** 📝 Declaritive Pacakge Management
 
