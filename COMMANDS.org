@@ -17,6 +17,9 @@ Coming from package managers like ~brew~, ~port~, ~apt~, etc., ~nix~ can /seem/ 
 
 ** Searching for Pacakges
 
+/Q: I want to install pacakges, but I'm not sure what is avalible/
+A: Search for pacakges to install
+
 Via the web @ https://search.nixos.org/
 
 Using the cli:
@@ -33,9 +36,9 @@ If your workflow has involved...
 
 ...and are making the move to ~nix~, then you are in the right place! ~nix~ can be used as a drop in replacement for these tools on most linux/unix based systems.
 
-*** Install a package
+*** 🔨 Install a package
 
-To install a package globally...
+Once the desired package has been identified, use ~nix-env~ to install the package globally...
 
 #+begin_src bash
   nix-env -i some_package
@@ -47,13 +50,13 @@ By default, ~nix-env -i~ will do a lookup of the argument given against ~nixpkgs
 
 ~-A~ = short for ~--attr~ across many ~nix~ commands. Instead of relying on the lookup, which could be slow at times, one could add ~-A~ along with the /exact/ package name to skip the lookup completely. This requires the name given to be exact, and can allow for installing a specific version of the target package. Can be combined with other flags i.e. ~-iA~
 
-** Declaritive Pacakge Management
+** 📄 Declaritive Pacakge Management
 
 To be detailed later.
 
 There are a few ways to approach this, including using ~flakes~ or helper packages installed imperatively like ~home-manager~
 
-** Temporary Packages
+** 🗑️ Temporary Packages
 
 Want to test a new tool or utility without making any permanent changes to your system? Lets test this with a couple of system info tools.
 
