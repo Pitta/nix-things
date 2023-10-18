@@ -13,7 +13,7 @@ From your terminal
 You should now be in the develop shell that has Node 20 avalible.
 
    #+begin_quote
-   /See [[file:/README.org#running-examples][README.org]] should you have issues running any nix commands/
+   /See [[file:~/projects/nix-things/examples/README.org#running-examples][README.org]] should you have issues running any nix commands/
    #+end_quote
 
 ** Validate
