@@ -27,7 +27,7 @@ Using the cli:
   
 #+end_src
 
-** Imperative Package Management
+** 🪛 Imperative Package Management
 
 If your workflow has involved...
 - ~brew install some_package~
@@ -36,7 +36,7 @@ If your workflow has involved...
 
 ...and are making the move to ~nix~, then you are in the right place! ~nix~ can be used as a drop in replacement for these tools on most linux/unix based systems.
 
-*** 🔨 Install a package
+*** Install a package
 
 Once the desired package has been identified, use ~nix-env~ to install the package globally...
 
@@ -50,7 +50,7 @@ By default, ~nix-env -i~ will do a lookup of the argument given against ~nixpkgs
 
 ~-A~ = short for ~--attr~ across many ~nix~ commands. Instead of relying on the lookup, which could be slow at times, one could add ~-A~ along with the /exact/ package name to skip the lookup completely. This requires the name given to be exact, and can allow for installing a specific version of the target package. Can be combined with other flags i.e. ~-iA~
 
-** 📄 Declaritive Pacakge Management
+** 📝 Declaritive Pacakge Management
 
 To be detailed later.
 
