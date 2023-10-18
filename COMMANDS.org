@@ -18,17 +18,15 @@ Coming from package managers like ~brew~, ~port~, ~apt~, etc., ~nix~ can /seem/ 
 ** 🔍 Searching for Pacakges
 
 #+begin_quote
-/Q: I want to install pacakges, but I'm not sure what is avalible/
-
-A: Search for pacakges to install
+/Question: I want to install pacakges, but I'm not sure what is avalible/
 #+end_quote
 
-Via the web @ https://search.nixos.org/
-
-Using the cli:
-#+begin_src bash
+Search for packages via:
+- The web UI @ https://search.nixos.org/
+- Using the cli:
+  #+begin_src bash
   nix-env -qaP 'some_package' 
-#+end_src
+  #+end_src
 
 - ~-q~: Stands for "query". Used to query the Nix store for /installed/ pacakges
 - ~-a~: Stands for "avalible". Used to search for /avalible packages/ to be installed
