@@ -1,6 +1,7 @@
 #+TITLE: Nix Things
 #+AUTHOR: github.com/Pitta
 
-This is meant to serve as a collection of varios ways i've learned how to do a thing in =nix=.
+This is meant to serve as a collection of things discovered when learning and exploring how to leverage =nix=.
 
 - Project Examples are collection of examples that show the utility/power of ~nix flakes~ as a way to manage developer environments.
+- Command Examples is simply a collection of =nix= commands that have been found to be useful to know or have quick reference for.

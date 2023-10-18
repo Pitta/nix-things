@@ -1,0 +1,32 @@
+#+TITLE: Nix Command Reference
+#+AUTHOR: github.com/Pitta
+
+A reference to ~nix~ commands found to be helpful in day to day use.
+
+* ~nix~ as a system-level package manager
+
+Coming from package managers like ~brew~, ~port~, ~apt~, etc., ~nix~ can /seem/ daunting/impenetrable. These commands should help demystify how to use ~nix~ as a drop in replacement for how most folks approach using the aforementioned tools.
+
+
+
+* Test drive new packages without installing
+
+Want to test a new tool or utility without making any permanent changes to your system? Lets test this with a couple of system info tools.
+
+Using ~nix-shell~, we can drop into a new temporary shell, adding any number of packages to this temporary shell with the ~-p~ flag 
+#+begin_src bash
+  nix-shell -p neofetch
+#+end_src
+
+That's it! You can add as many packages as you like to the ~-p~ flag, seperateing each package with a single space. Upon ~exit~ of the shell, all the "installed" packages are removed from your envrionment.
+
+** Validate
+
+Once in the temporary shell:
+
+1. Run ~which neofetch~ to see where the binary sits on your system
+   - Note the location is in a directory like ~/nix/store/somelonghash/bin~
+2. Run ~neofetch~ to run the application itself
+3. Run ~exit~ to leave the temporary shell
+4. Try running ~neofetch~ again
+   - It should throw an error saying "command not found"
