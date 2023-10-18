@@ -7,15 +7,15 @@ A reference to ~nix~ commands found to be helpful in day to day use.
 
 Coming from package managers like ~brew~, ~port~, ~apt~, etc., ~nix~ can /seem/ daunting/impenetrable. These section should help demystify how to use ~nix~ as a drop in replacement for how most folks approach using the aforementioned tools.
 
-- [[#searching-for-packages][Searching for Packages]]
-- [[#imperitive-package-management][Imperitive Package Management]]
-  - How most users manage packages, typically by invoking an install command with the package manager of choice.
-- [[*declaritive-package-management][Declaritive Package Management]]
+- [[#-searching-for-packages][Searching for Packages]]
+- [[#-imperitive-package-management][Imperitive Package Management]]
+  - how most users manage packages, typically by invoking an install command with the package manager of choice.
+- [[#-declaritive-package-management][Declaritive Package Management]]
   - A more portable, version controll-able approach that declares the desired end state. Great for using the same configuration across multiple machines.
-- [[*temporary-packages][Temporary Packages]]
+- [[#-temporary-packages][Temporary Packages]]
   - Excellent for testing new versions of packages, or entirely new tools, without comitting to system level changes that could impact other parts of the system.
 
-** Searching for Pacakges
+** 🔍 Searching for Pacakges
 
 /Q: I want to install pacakges, but I'm not sure what is avalible/
 A: Search for pacakges to install
