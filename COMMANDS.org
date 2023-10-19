@@ -86,7 +86,7 @@ Uninstalling a package requires knowing its name. We can find a list of the inst
 #+end_src
 
 #+begin_quote
-/Note: Don't forget, -q is querying all installed packages/
+/📝 Note: Don't forget, -q is querying all installed packages/
 #+end_quote
 
 With the target package name in hand, we can then run:
