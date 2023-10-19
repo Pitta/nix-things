@@ -117,7 +117,7 @@ Using ~nix-shell~, we can drop into a new temporary shell, adding ~neofetch~:
 
 That's it! You can add as many packages as you like to the ~-p~ flag, seperateing each package with a single space. Upon ~exit~ of the shell, all the "installed" packages are removed from your envrionment.
 
-** ✅ Validate ~neofetch~ Install
+*** ✅ Validate ~neofetch~ Install
 
 Once in the temporary shell:
 
