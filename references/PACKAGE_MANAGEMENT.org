@@ -20,7 +20,7 @@ Search for packages via:
   - ~-a~: Stands for "avalible". Used to search for /avalible packages/ to be installed
   - ~-P~: Includes the attribute path of the package. This result is often used with the ~-A~ flag during installs to more precisely target the desired package.
 
-** 👀 Simplify it
+*** 👀 Simplify it
 
 Add this alias so you don't need to remember the flags:
 
