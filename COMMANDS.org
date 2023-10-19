@@ -7,15 +7,7 @@ A reference to ~nix~ commands found to be helpful in day to day use.
 
 Coming from package managers like ~brew~, ~port~, ~apt~, etc., ~nix~ can /seem/ daunting/impenetrable. These section should help demystify how to use ~nix~ as a drop in replacement for how most folks approach using the aforementioned tools.
 
-- [[#-searching-for-packages][Searching for Packages]]
-- [[#-imperitive-package-management][Imperitive Package Management]]
-  - how most users manage packages, typically by invoking an install command with the package manager of choice.
-- [[#-declaritive-package-management][Declaritive Package Management]]
-  - A more portable, version controll-able approach that declares the desired end state. Great for using the same configuration across multiple machines.
-- [[#-temporary-packages][Temporary Packages]]
-  - Excellent for testing new versions of packages, or entirely new tools, without comitting to system level changes that could impact other parts of the system.
-
-** 🔍 Searching for Pacakges
+** 🔍 Searching for Packages
 
 #+begin_quote
 /Question: I want to install pacakges, but I'm not sure what is avalible/
@@ -32,7 +24,15 @@ Search for packages via:
   - ~-a~: Stands for "avalible". Used to search for /avalible packages/ to be installed
   - ~-P~: Includes the attribute path of the package. This result is often used with the ~-A~ flag during installs to more precisely target the desired package.
 
-** 🪛 Imperative Package Management
+*** Simplify it
+
+Add this alias so you don't need to remember the flags:
+
+#+begin_src bash
+  alias nix-search="nix-env -qaP"
+#+end_src
+
+** 🪛 Simple Package Management
 
 #+begin_quote
 /Question: I'm used to tools like brew - how do I use nix in a similar way?/
@@ -45,7 +45,7 @@ If your workflow has involved...
 
 ...and are making the move to ~nix~, then you are in the right place! ~nix~ can be used as a drop in replacement for these tools on most linux/unix based systems.
 
-*** Install a package
+*** Installing Packages
 
 Once the desired package has been identified, use ~nix-env~ to install the package globally...
 
@@ -69,13 +69,25 @@ To install these packages anyway, prepend ~NIXPKGS_ALLOW_UNFREE=1~ to the call t
 #+end_src
 #+end_quote
 
-*** Uninstalling a package
+*** Simplify it
+
+Add this alias so you don't need to remember the flags:
+
+#+begin_src bash
+  alias nix-install="nix-env -i"
+#+end_src
+
+*** Uninstalling Packages
 
 Uninstalling a package requires knowing its name. We can find a list of the installed packages like this:
 
 #+begin_src bash
   nix-env -q some_package
 #+end_src
+
+#+begin_quote
+/Note: Don't forget, ~-q~ is querying all installed packages/
+#+end_quote
 
 With the target package name in hand, we can then run:
 
@@ -88,24 +100,28 @@ With the target package name in hand, we can then run:
 
 To validate, simply re-run ~nix-env -q some_package~ and check that output.
 
-** 📝 Declaritive Pacakge Management
+*** Simplify it
 
-To be detailed later.
+Add this alias so you don't need to remember the flags:
 
-There are a few ways to approach this, including using ~flakes~ or helper packages installed imperatively like ~home-manager~
+#+begin_src bash
+  alias nix-uninstall="nix-env -e"
+  # OR
+  alias nix-erase="nix-env -e"
+#+end_src
 
-** 🗑️ Temporary Packages
+** 🗑️ Ephemeral Packages
 
-Want to test a new tool or utility without making any permanent changes to your system? Lets test this with a couple of system info tools.
+Excellent for testing new versions of packages, or entirely new tools, without comitting to system level changes that could impact other parts of the system. Lets test this with a simple system info tool, [[https://github.com/dylanaraps/neofetch][neofetch]].
 
-Using ~nix-shell~, we can drop into a new temporary shell, adding any number of packages to this temporary shell with the ~-p~ flag 
+Using ~nix-shell~, we can drop into a new temporary shell, adding ~neofetch~:
 #+begin_src bash
   nix-shell -p neofetch
 #+end_src
 
 That's it! You can add as many packages as you like to the ~-p~ flag, seperateing each package with a single space. Upon ~exit~ of the shell, all the "installed" packages are removed from your envrionment.
 
-*** Validate
+*** Validate ~neofetch~ Install
 
 Once in the temporary shell:
 
