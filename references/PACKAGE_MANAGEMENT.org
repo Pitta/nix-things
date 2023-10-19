@@ -41,7 +41,7 @@ If your workflow has involved...
 
 ...and are making the move to ~nix~, then you are in the right place! ~nix~ can be used as a drop in replacement for these tools on most linux/unix based systems.
 
-*** 🛠️ Installing Packages
+** 🛠️ Installing Packages
 
 Once the desired package has been identified, use ~nix-env~ to install the package globally...
 
@@ -65,7 +65,7 @@ To install these packages anyway, prepend ~NIXPKGS_ALLOW_UNFREE=1~ to the call t
 #+end_src
 #+end_quote
 
-**** 👀 Simplify it
+*** 👀 Simplify it
 
 Add this alias so you don't need to remember the flags:
 
@@ -73,7 +73,7 @@ Add this alias so you don't need to remember the flags:
   alias nix-install="nix-env -i"
 #+end_src
 
-*** 🗑️ Uninstalling Packages
+** 🗑️ Uninstalling Packages
 
 Uninstalling a package requires knowing its name. We can find a list of the installed packages like this:
 
@@ -96,7 +96,7 @@ With the target package name in hand, we can then run:
 
 To validate, simply re-run ~nix-env -q some_package~ and check that output.
 
-**** 👀 Simplify it
+*** 👀 Simplify it
 
 Add this alias so you don't need to remember the flags:
 
@@ -117,7 +117,7 @@ Using ~nix-shell~, we can drop into a new temporary shell, adding ~neofetch~:
 
 That's it! You can add as many packages as you like to the ~-p~ flag, seperateing each package with a single space. Upon ~exit~ of the shell, all the "installed" packages are removed from your envrionment.
 
-*** ✅ Validate ~neofetch~ Install
+** ✅ Validate ~neofetch~ Install
 
 Once in the temporary shell:
 
