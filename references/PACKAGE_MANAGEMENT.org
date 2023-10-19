@@ -41,7 +41,7 @@ If your workflow has involved...
 
 ...and are making the move to ~nix~, then you are in the right place! ~nix~ can be used as a drop in replacement for these tools on most linux/unix based systems.
 
-** 🪛 Installing Packages
+** 🛠️ Installing Packages
 
 Once the desired package has been identified, use ~nix-env~ to install the package globally...
 
