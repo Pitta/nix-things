@@ -1,0 +1,24 @@
+#+TITLE: Project Examples
+#+AUTHOR: github.com/Pitta
+
+Project Examples is meant to show how to build up a new or existing project to leverage ~nix~ and ~flakes~ to manage the developer environment and experience.
+
+More examples will be added over time as more functionality is discovered.
+
+* Running Project Examples
+
+Clone this repo to run any of the examples to see and tinker with how they function.
+
+#+begin_quote
+Note: if you get an error like the one below when running ~nix~ commands:
+
+#+begin_src shell
+  error: experimental Nix feature 'flakes' is disabled; use '--extra-experimental-features flakes' to override
+#+end_src
+
+That means these features are still locked behind an experimental flag. To address this, create a file at ~/etc/nix/nix.conf~, then add the following line to it:
+
+#+begin_src shell
+  experimental-features = nix-command flakes
+#+end_src
+#+end_quote

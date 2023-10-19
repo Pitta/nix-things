@@ -1,0 +1,129 @@
+#+TITLE: 📦 Package Management 📦
+#+AUTHOR: github.com/Pitta
+
+Coming from package managers like ~brew~, ~port~, ~apt~, etc., ~nix~ can /seem/ daunting/impenetrable. These section should help demystify how to use ~nix~ as a drop in replacement for how most folks approach using the aforementioned tools.
+
+* 🔍 Searching for Packages
+
+#+begin_quote
+/Question: I want to install pacakges, but I'm not sure what is avalible/
+#+end_quote
+
+Search for packages via:
+- The web UI @ https://search.nixos.org/
+- Using the cli:
+  #+begin_src bash
+  nix-env -qaP 'some_package' 
+  #+end_src
+
+  - ~-q~: Stands for "query". Used to query the Nix store for /installed/ pacakges
+  - ~-a~: Stands for "avalible". Used to search for /avalible packages/ to be installed
+  - ~-P~: Includes the attribute path of the package. This result is often used with the ~-A~ flag during installs to more precisely target the desired package.
+
+*** 👀 Simplify it
+
+Add this alias so you don't need to remember the flags:
+
+#+begin_src bash
+  alias nix-search="nix-env -qaP"
+#+end_src
+
+* 📦 Simple Package Management
+
+#+begin_quote
+/Question: I'm used to tools like brew - how do I use nix in a similar way?/
+#+end_quote
+
+If your workflow has involved...
+- ~brew install some_package~
+- ~port install some_package~
+- ~api-get install some_package~
+
+...and are making the move to ~nix~, then you are in the right place! ~nix~ can be used as a drop in replacement for these tools on most linux/unix based systems.
+
+** 🛠️ Installing Packages
+
+Once the desired package has been identified, use ~nix-env~ to install the package globally...
+
+#+begin_src bash
+  nix-env -i some_package
+#+end_src
+
+- ~-i~: short flag for ~--install~.
+  - Takes multiple arguements in a space-seperated list.
+  - By default, ~nix-env -i~ will do a lookup of the argument given against ~nixpkgs~, similarly to going to https://search.nixos.org/, searching, and using the top result.
+- ~-A~: short for ~--attr~ across many ~nix~ commands.
+  - Instead of relying on the lookup, which could be slow at times, one could add ~-A~ along with the /exact/ package name to skip the lookup completely. This requires the name given to be exact, and can allow for installing a specific version of the target package.
+  - Can be combined with other flags i.e. ~-iA~
+
+#+begin_quote
+Note: If a package being installed complains about the package license being "unfree", this means the package has some licensing agreement that is not conguent with typical open-source tools.
+
+To install these packages anyway, prepend ~NIXPKGS_ALLOW_UNFREE=1~ to the call to make a 1 time allowance. The whole call should look something like:
+#+begin_src bash
+  NIXPKGS_ALLOW_UNFREE=1 nix-env -i some_package
+#+end_src
+#+end_quote
+
+*** 👀 Simplify it
+
+Add this alias so you don't need to remember the flags:
+
+#+begin_src bash
+  alias nix-install="nix-env -i"
+#+end_src
+
+** 🗑️ Uninstalling Packages
+
+Uninstalling a package requires knowing its name. We can find a list of the installed packages like this:
+
+#+begin_src bash
+  nix-env -q some_package
+#+end_src
+
+#+begin_quote
+/📝 Note: Don't forget, -q is querying all installed packages/
+#+end_quote
+
+With the target package name in hand, we can then run:
+
+#+begin_src bash
+  nix-env -e some_package
+#+end_src
+
+- ~-e~: Stands for "erase"
+  - Takes a space-seperated list of pacakges to be removed from the system
+
+To validate, simply re-run ~nix-env -q some_package~ and check that output.
+
+*** 👀 Simplify it
+
+Add this alias so you don't need to remember the flags:
+
+#+begin_src bash
+  alias nix-uninstall="nix-env -e"
+  # OR
+  alias nix-erase="nix-env -e"
+#+end_src
+
+* 💨 Ephemeral Packages
+
+Excellent for testing new versions of packages, or entirely new tools, without comitting to system level changes that could impact other parts of the system. Lets test this with a simple system info tool, [[https://github.com/dylanaraps/neofetch][neofetch]].
+
+Using ~nix-shell~, we can drop into a new temporary shell, adding ~neofetch~:
+#+begin_src bash
+  nix-shell -p neofetch
+#+end_src
+
+That's it! You can add as many packages as you like to the ~-p~ flag, seperateing each package with a single space. Upon ~exit~ of the shell, all the "installed" packages are removed from your envrionment.
+
+*** ✅ Validate ~neofetch~ Install
+
+Once in the temporary shell:
+
+1. Run ~which neofetch~ to see where the binary sits on your system
+   - Note the location is in a directory like ~/nix/store/somelonghash/bin~
+2. Run ~neofetch~ to run the application itself
+3. Run ~exit~ to leave the temporary shell
+4. Try running ~neofetch~ again
+   - It should throw an error saying "command not found"
