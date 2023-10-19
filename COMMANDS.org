@@ -3,7 +3,7 @@
 
 A reference to ~nix~ commands found to be helpful in day to day use.
 
-* Package Management
+* 📦 Package Management 📦
 
 Coming from package managers like ~brew~, ~port~, ~apt~, etc., ~nix~ can /seem/ daunting/impenetrable. These section should help demystify how to use ~nix~ as a drop in replacement for how most folks approach using the aforementioned tools.
 
@@ -24,7 +24,7 @@ Search for packages via:
   - ~-a~: Stands for "avalible". Used to search for /avalible packages/ to be installed
   - ~-P~: Includes the attribute path of the package. This result is often used with the ~-A~ flag during installs to more precisely target the desired package.
 
-*** Simplify it
+*** 👀 Simplify it
 
 Add this alias so you don't need to remember the flags:
 
@@ -32,7 +32,7 @@ Add this alias so you don't need to remember the flags:
   alias nix-search="nix-env -qaP"
 #+end_src
 
-** 🪛 Simple Package Management
+** 📦 Simple Package Management
 
 #+begin_quote
 /Question: I'm used to tools like brew - how do I use nix in a similar way?/
@@ -45,7 +45,7 @@ If your workflow has involved...
 
 ...and are making the move to ~nix~, then you are in the right place! ~nix~ can be used as a drop in replacement for these tools on most linux/unix based systems.
 
-*** Installing Packages
+*** 🪛 Installing Packages
 
 Once the desired package has been identified, use ~nix-env~ to install the package globally...
 
@@ -69,7 +69,7 @@ To install these packages anyway, prepend ~NIXPKGS_ALLOW_UNFREE=1~ to the call t
 #+end_src
 #+end_quote
 
-**** Simplify it
+**** 👀 Simplify it
 
 Add this alias so you don't need to remember the flags:
 
@@ -77,7 +77,7 @@ Add this alias so you don't need to remember the flags:
   alias nix-install="nix-env -i"
 #+end_src
 
-*** Uninstalling Packages
+*** 🗑️ Uninstalling Packages
 
 Uninstalling a package requires knowing its name. We can find a list of the installed packages like this:
 
@@ -100,7 +100,7 @@ With the target package name in hand, we can then run:
 
 To validate, simply re-run ~nix-env -q some_package~ and check that output.
 
-**** Simplify it
+**** 👀 Simplify it
 
 Add this alias so you don't need to remember the flags:
 
@@ -110,7 +110,7 @@ Add this alias so you don't need to remember the flags:
   alias nix-erase="nix-env -e"
 #+end_src
 
-** 🗑️ Ephemeral Packages
+** 💨 Ephemeral Packages
 
 Excellent for testing new versions of packages, or entirely new tools, without comitting to system level changes that could impact other parts of the system. Lets test this with a simple system info tool, [[https://github.com/dylanaraps/neofetch][neofetch]].
 
@@ -121,7 +121,7 @@ Using ~nix-shell~, we can drop into a new temporary shell, adding ~neofetch~:
 
 That's it! You can add as many packages as you like to the ~-p~ flag, seperateing each package with a single space. Upon ~exit~ of the shell, all the "installed" packages are removed from your envrionment.
 
-*** Validate ~neofetch~ Install
+*** ✅ Validate ~neofetch~ Install
 
 Once in the temporary shell:
 
